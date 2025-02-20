@@ -1,7 +1,7 @@
 
                 // Array of 15 custom tooltip messages
                 const tooltipMessages = [
-                    "Welcome to Thiruvathira!",
+                    "പള്ളിയറ നവീകരണം",
                     "Explore our traditions",
                     "Join the celebration",
                     "Learn about rituals",
