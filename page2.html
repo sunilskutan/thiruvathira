@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malayalam Text Animation with Audio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Manjari', sans-serif;
+            background-color: #f8f4e8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #b33939;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .text-display {
+            font-size: 24px;
+            line-height: 1.8;
+            text-align: left;
+            min-height: 200px;
+            color: #333;
+            padding: 20px;
+            background-color: #fff9f0;
+            border-radius: 8px;
+            border-left: 4px solid #b33939;
+        }
+        
+        .highlight {
+            color: #b33939;
+            font-weight: bold;
+        }
+        
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        button {
+            background-color: #b33939;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #8e2c2c;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .audio-controls {
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        #audioPlayer {
+            width: 100%;
+        }
+        
+        .speed-control {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .speed-control label {
+            font-size: 14px;
+        }
+        
+        .speed-control input {
+            width: 200px;
+        }
+        
+        .status {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>കടയ്ക്കല്‍ പീഠികാദേവി ക്ഷേത്രം</h1>
+        
+        <div id="textDisplay" class="text-display"></div>
+        
+        <div class="audio-controls">
+            <audio id="audioPlayer" controls>
+                <source src="fullaudio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            
+            <div class="speed-control">
+                <label for="speedControl">അക്ഷരങ്ങളുടെ വേഗത (Letter Speed):</label>
+                <input type="range" id="speedControl" min="50" max="300" value="150">
+                <span id="speedValue">150ms</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="playBtn">ആരംഭിക്കുക (Start)</button>
+            <button id="pauseBtn" disabled>നിര്‍ത്തുക (Pause)</button>
+            <button id="restartBtn" disabled>പുനരാരംഭിക്കുക (Restart)</button>
+        </div>
+        
+        <p id="status" class="status">ആരംഭിക്കാന്‍ തയ്യാറാണ്</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // The Malayalam text to display letter by letter
+            const malayalamText = "ബഹുമാന്യ ഭക്തജനങ്ങളെ, നൂറ്റാണ്ടുകള്‍ പഴക്കമുള്ളതാണ്‌ കടയ്ക്കല്‍ പീഠികാദേവി ക്ഷേത്രം. ഇവിടെ 'പ്രതിഷ്ഠ' ഇല്ല. ദേവി സ്വയംഭൂവായ പവിത്രമായ പള്ളിയറയ്ക്കുള്ളില്‍ കുടികൊള്ളുകയാണ്‌. അതിവിശിഷ്ടങ്ങളും വളരെ പ്രത്യേകതകളുമുള്ള ആചാരാനുഷ്ഠാനങ്ങളുടെ  കലവറയാണ് നമ്മുടെ ക്ഷേത്രം. വിശ്വപ്രസിദ്ധമായ, തെക്കന്‍ കേരളത്തിലെ നാനാജാതി മതസ്ഥരും ആരാധിക്കുന്ന നമ്മുടെ ക്ഷേത്രത്തിലെ നൂറ്റാണ്ടുകള്‍ പഴക്കമുള്ള പീഠികാക്ഷേത്ര പള്ളിയറ പുതുക്കി പണിയുന്ന വിവരം എല്ലാ ഭക്തജനങ്ങളെയും സന്തോദഷത്താടെ കടയ്ക്കല്‍ ക്ഷേത്ര ഉപദേശക സമിതി  അറിയിക്കുന്നു. ബഹുമാനപെട്ട തിരുവിതാംകൂര്‍ ദേവസ്വം ബോര്‍ഡിന്റെ അനുമതിയോടെ,  ക്ഷേത്രം ത്ന്തിമാരായ ബ്രഹ്മശ്രീ വാസുദേവരര്‌ വാസുദേവരര്‌, ബ്രഹ്മശ്രീ മാധവര്‌ ശംഭുപോറ്റി, ദേവസ്വംബോര്‍ഡ്‌ സ്തപതി കുഴിക്കാട്ട്‌ ഇല്ലത്ത്‌ ശ്രീ. വാസുദേവന്‍ നമ്പുതിരിപ്പാടിന്റെയും ക്ഷേത്രം മേല്‍ശാന്തി, ശ്രീ ശശിധരകൂറുപ്പിന്റെയും നിര്‍ദേശത്തോടെ ശബരിമല,മാളികപ്പുറം മുന്‍ മേല്‍ശാന്തി ശ്രീ.മധുസൂദനന്‍ പോറ്റിയൂടെ താന്ത്രിക വിധിപ്രകാരമാണ്‌ പരമപവിത്രമായ പളളിയറപുതുക്കി പണിയുന്നത്‌. “അകത്ത്കണ്ടത്‌  പുറത്ത്പറയരുത്‌” എന്ന കടയ്ക്കലമ്മയുടെ തിരുവരുള്‍ പ്രകാരമുള്ള അനുഷ്ഠാനത്തിന്‌ യാതൊരുവിധ കോട്ടവുസംഭവിക്കാതെയാണ്‌ പള്ളിയറയുടെ നവീകരണ പ്രവര്‍ത്തനങ്ങൾ നടത്തുന്നത്‌. ലക്ഷക്കണക്കിന്‌ രൂപ ചിലവ് വരുന്ന പള്ളിയറയുടെ നവീകരണ പ്രവര്‍ത്തനത്തിന്‌ പ്രധാനമായും സാമ്പത്തിക സഹായം നല്‍കുന്നത്‌ കടയ്ക്കല്‍ പള്ളിയമ്പലം ജൂവലറി ഉടമ അഡ്വ.ജയചന്ദ്ര൯പിള്ളയാണ്‌. പളളിയറയുടെ അടിത്തറയും കുളം വരയ്ക്കുന്ന തളവും കൃഷ്ണശില പാകിയാണ്‌ പുതുക്കി പണിയുന്നത്‌. കൃഷ്ണശില പാകുന്നതിന്റെ ധനസഹായം ചെയ്യുന്ന ത്‌ അഡ്വ. ചിതറ രാധാകൃഷ്ണന്‍, ഋഷികേശന്‍ നായര്‍, പാവല്ല, മുകുന്നേരി, ബാഹുലേയന്‍ പിള്ള, ബി.ബി.ഹൌസ്‌, ആല്‍ത്തറമൂട്‌, അഡ്വ.ജയചന്ദ്രന്‍പിള്ള, പള്ളയമ്പലം, കടയ്ക്കല്‍ എന്നിവർ ചേര്‍ന്നാണ്‌. 2025 ജനുവരി 20 (1200 മകരം 7) ന്‌ രാവിലെ 9.15 നുള്ള പൂണ്യ മുഹൂര്‍ത്തത്തില്‍ ദേവസ്വം ബോര്‍ഡ്‌ ഭാരവാഹികൾ, ക്ഷേത്രം തന്ത്രിമാര്‍, ക്ഷേത്രം മേല്‍ശാന്തി, ദേവസ്വം ജീവനക്കാര്‍, ക്ഷേത്ര ഉപദേശക സമിതി അംഗങ്ങള്‍, തിരുവാതിര മഹോത്സവ കമ്മിറ്റി അംഗങ്ങള്‍, കരകമ്മിറ്റി പ്രതിനിധികള്‍, നൂറുകണക്കിന്‌ ഭക്തജനങ്ങള്‍ എന്നിവരുടെ മഹനീയ സാന്നിദ്ധ്യത്തില്‍, കടയ്ക്കല്‍ പൊന്നുതമ്പുരാട്ടിയുടെ തിരുനടയില്‍ വച്ച്‌ ക്ഷേത്ര നിര്‍മ്മാണ രംഗത്ത്‌ പ്രാഗൽഭ്യം തെളിയിച്ച മലപ്പുറം  ശ്രീ.ശ്രീനിവാസന്‍ ആശാരി പളളിയറയുടെ നവികരണ പ്രവര്‍ത്തനത്തിന് തുടക്കം കുറിച്ചു. പ്രസ്തുത പള്ളിയറയുടെ നവീകരണ പ്രവര്‍ത്തനങ്ങൾ ഈ വര്‍ഷത്തെ തിരുവാതിര മഹോത്സവം കഴിഞ്ഞതിന്‌ ശേഷം പൂര്‍ത്തിയാക്കുന്നതാണ്‌. സര്‍വ്വാഭീഷ വരദായിനിയായ കടയ്ക്കലമ്മയുടെ പള്ളിയറയുടെ നവീകരണ പ്രവര്‍ത്തനങ്ങൾക്ക്‌ സാമ്പത്തികമായും അല്ലാതെയും സഹകരിച്ച എല്ലാ മാന്യവ്യക്തികള്‍ക്കും സ്ഥാപനങ്ങള്‍ക്കും കടയ്ക്കല്‍ ക്ഷേത്ര  ഉപദേശക സമിതിയുടെ നന്ദിയും കടപ്പാടും ഭക്തിആദരവോടെ സമര്‍ഭിക്കുന്നു. ക്ഷേത്ര  ഉപദേശക സമിതിയുടെ നേതൃത്വത്തില്‍ കടയ്ക്കലിലെ മൂന്ന്‌ ക്ഷേത്രങ്ങളിലും വിവിധങ്ങളായ നിര്‍മ്മാണ പ്രവര്‍ത്തനങ്ങൾ നടന്നുവരികയാണ്‌. എല്ലാ ഭക്തജനങ്ങളുടെയും അകമഴിഞ്ഞ സാമ്പത്തിക സഹായം ക്ഷേത്ര  ഉപദേശക സമിതി അഭ്യര്‍ത്ഥിക്കുന്നു.";
+            
+            // Convert text to array of characters, handling Malayalam properly
+            const textArray = Array.from(malayalamText);
+            
+            // Elements
+            const textDisplay = document.getElementById("textDisplay");
+            const audioPlayer = document.getElementById("audioPlayer");
+            const playBtn = document.getElementById("playBtn");
+            const pauseBtn = document.getElementById("pauseBtn");
+            const restartBtn = document.getElementById("restartBtn");
+            const statusEl = document.getElementById("status");
+            const speedControl = document.getElementById("speedControl");
+            const speedValue = document.getElementById("speedValue");
+            
+            let currentIndex = 0;
+            let isPlaying = false;
+            let animationInterval;
+            let letterSpeed = parseInt(speedControl.value);
+            
+            // Update speed display
+            speedControl.addEventListener("input", function() {
+                letterSpeed = parseInt(this.value);
+                speedValue.textContent = letterSpeed + "ms";
+                
+                if (isPlaying) {
+                    // Restart animation with new speed if currently playing
+                    clearInterval(animationInterval);
+                    startAnimation();
+                }
+            });
+            
+            // Start playing automatically when page loads
+            window.onload = function() {
+                setTimeout(() => {
+                    startPlayback();
+                }, 1000); // Small delay to ensure everything is loaded
+            };
+            
+            // Button event listeners
+            playBtn.addEventListener("click", startPlayback);
+            pauseBtn.addEventListener("click", pausePlayback);
+            restartBtn.addEventListener("click", restartPlayback);
+            
+            // Audio event listeners
+            audioPlayer.addEventListener("play", function() {
+                if (!isPlaying) startAnimation();
+            });
+            
+            audioPlayer.addEventListener("pause", function() {
+                pauseAnimation();
+            });
+            
+            audioPlayer.addEventListener("ended", function() {
+                finishAnimation();
+                statusEl.textContent = "പൂര്‍ണ്ണമായി";
+            });
+            
+            function startPlayback() {
+                if (!isPlaying) {
+                    audioPlayer.play().then(() => {
+                        startAnimation();
+                        updateButtonState(true);
+                        statusEl.textContent = "പ്രദര്‍ശനം ആരംഭിച്ചു";
+                    }).catch(err => {
+                        console.error("Audio play error:", err);
+                        // Start animation even if audio fails
+                        startAnimation();
+                        updateButtonState(true);
+                        statusEl.textContent = "ടെക്സ്റ്റ് പ്രദര്‍ശനം ആരംഭിച്ചു (ഓഡിയോ പിശക്)";
+                    });
+                }
+            }
+            
+            function pausePlayback() {
+                audioPlayer.pause();
+                pauseAnimation();
+                updateButtonState(false);
+                statusEl.textContent = "താല്‍ക്കാലികമായി നിര്‍ത്തി";
+            }
+            
+            function restartPlayback() {
+                currentIndex = 0;
+                textDisplay.innerHTML = "";
+                audioPlayer.currentTime = 0;
+                audioPlayer.play();
+                startAnimation();
+                updateButtonState(true);
+                statusEl.textContent = "പുനരാരംഭിച്ചു";
+            }
+            
+            function startAnimation() {
+                isPlaying = true;
+                
+                // Clear any existing interval
+                clearInterval(animationInterval);
+                
+                animationInterval = setInterval(() => {
+                    if (currentIndex < textArray.length) {
+                        // Add the next character with highlight
+                        let displayText = "";
+                        for (let i = 0; i <= currentIndex; i++) {
+                            if (i === currentIndex) {
+                                displayText += `<span class="highlight">${textArray[i]}</span>`;
+                            } else {
+                                displayText += textArray[i];
+                            }
+                        }
+                        textDisplay.innerHTML = displayText;
+                        currentIndex++;
+                    } else {
+                        clearInterval(animationInterval);
+                        finishAnimation();
+                    }
+                }, letterSpeed);
+            }
+            
+            function pauseAnimation() {
+                isPlaying = false;
+                clearInterval(animationInterval);
+            }
+            
+            function finishAnimation() {
+                isPlaying = false;
+                clearInterval(animationInterval);
+                
+                // Display full text
+                textDisplay.innerHTML = malayalamText;
+                
+                // Enable restart button
+                updateButtonState(false, true);
+            }
+            
+            function updateButtonState(isPlaying, isCompleted = false) {
+                playBtn.disabled = isPlaying;
+                pauseBtn.disabled = !isPlaying;
+                restartBtn.disabled = !(isCompleted || currentIndex > 0);
+            }
+            
+            // Handle visibility change (tab switching)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden && isPlaying) {
+                    // Pause when switching away from tab
+                    pausePlayback();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
