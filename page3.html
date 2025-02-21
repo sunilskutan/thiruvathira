@@ -76,11 +76,17 @@
     document.addEventListener("DOMContentLoaded", function () {
         let audio = new Audio("shinkari_melam.mp3");
         audio.loop = true;
+        let isPlaying = false;
 
-        // Play audio after user interacts with the page
+        // Toggle audio on click
         document.body.addEventListener("click", function () {
-            audio.play();
-        }, { once: true }); // Ensures it runs only once
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+        });
     });
 </script>
 
