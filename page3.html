@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots - Scrolling Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 22px;
+	    font-weight:bold;
+            margin-bottom: 20px;
+            color: #e6004c;
+            text-align: center;
+        }
+        
+        .image-container {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scrolling-image {
+            width: 100%;
+            position: absolute;
+            animation: scrollAnimation 60s linear infinite;
+        }
+        
+        @keyframes scrollAnimation {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -2696px; /* Image height (2996px) - container height (300px) */
+            }
+        }
+        
+        /* Media query for different screen sizes */
+        @media (max-width: 350px) {
+            .image-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            @keyframes scrollAnimation {
+                0% {
+                    top: 0;
+                }
+                100% {
+                    top: -2716px; /* Adjusted for smaller container */
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>കെട്ടുകാഴ്ചകള്‍ </h1>
+    <div class="image-container">
+        <img src="plots2.jpg" alt="Plots visualization" class="scrolling-image">
+    </div>
+    
+    <script>
+        // Replace the placeholder with your actual image URL
+        document.addEventListener('DOMContentLoaded', function() {
+            // You'll need to replace this with your actual image URL
+            // const imageUrl = 'plots2.jpg';
+            // document.querySelector('.scrolling-image').src = imageUrl;
+        });
+    </script>
+
+<div >
+<br><br>
+        <img src="img22.png" alt="head" >
+    </div>
+
+
+</body>
+</html>
