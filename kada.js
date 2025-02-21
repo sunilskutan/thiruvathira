@@ -13,7 +13,7 @@
                     "Meet the community",
                     "Traditional attire",
                     "Festival foods",
-                    "Historical significance",
+                    "MUSIC DROPS",
                     "Photo gallery",
                     "Event schedule"
                 ];
