@@ -2,7 +2,7 @@
                 // Array of 15 custom tooltip messages
                 const tooltipMessages = [
                     "പള്ളിയറ നവീകരണം",
-                    "Explore our traditions",
+                    "കെട്ടുകാഴ്ചകള്‍",
                     "Join the celebration",
                     "Learn about rituals",
                     "Experience the music",
