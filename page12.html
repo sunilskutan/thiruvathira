@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .video-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        #video1 {
+            border-bottom: 2px solid white;  //https://youtube.com/shorts/hx2kG6GC2j8?si=0iWUazYs3r9T421K
+        }
+    </style> 
+</head>
+<body>
+   
+    <div class="video-container" id="video2">
+        <iframe src="https://www.youtube.com/embed/hx2kG6GC2j8?si=0iWUazYs3r9T421K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      
+        const video2 = document.querySelector('#video2 iframe');
+
+ 
+
+        video2.addEventListener('play', () => {
+            video1.src = video1.src; // This stops the first video from playing
+        });
+    </script>
+</body>
+</html>
