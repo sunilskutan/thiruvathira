@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots - Scrolling Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden; /* Prevent confetti from overflowing */
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #e6004c;
+            text-align: center;
+        }
+
+        .image-container {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scrolling-image {
+            width: 100%;
+            position: absolute;
+            animation: scrollAnimation 60s linear infinite;
+        }
+
+        @keyframes scrollAnimation {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -2696px; /* Image height (2996px) - container height (300px) */
+            }
+        }
+
+        /* Media query for different screen sizes */
+        @media (max-width: 350px) {
+            .image-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            @keyframes scrollAnimation {
+                0% {
+                    top: 0;
+                }
+                100% {
+                    top: -2716px; /* Adjusted for smaller container */
+                }
+            }
+        }
+
+        /* Confetti Styles */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allow clicks to pass through */
+            z-index: 1000; /* Ensure it's on top */
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00, #0f0, #00f, #ff0, #f0f; /* Example colors */
+            top: -10px; /* Start above the viewport */
+            animation: confettiFall 3s linear infinite; /* Adjust duration */
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .head-image { /* Style for the second image */
+            margin-top: 20px; /* Add some spacing */
+            max-width: 100%; /* Prevent overflow */
+            height: auto;
+            display: block; /* Prevents image from affecting layout */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ദീപാലങ്കാരം </h1>
+    <div class="image-container">
+        <img src="lighting.jpg" alt="Plots visualization" class="scrolling-image">
+    </div>
+
+    <img src="img23.jpg" alt="head" class="head-image">
+
+    <div class="confetti"></div>
+
+    <script>
+        // Confetti Script
+        const confettiContainer = document.querySelector('.confetti');
+        const numConfetti = 200; // Number of confetti pieces
+
+        for (let i = 0; i < numConfetti; i++) {
+            const confettiPiece = document.createElement('div');
+            confettiPiece.classList.add('confetti-piece');
+            confettiPiece.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            confettiPiece.style.animationDelay = `${Math.random() * 2}s`; // Random delay
+            confettiPiece.style.backgroundColor = getRandomColor(); // Random color
+            confettiContainer.appendChild(confettiPiece);
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+    </script>
+
+</body>
+</html>
