@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Frames</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .frame-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+        }
+        iframe {
+            width: 90%;
+            height: 250px;
+            border: none;
+        }
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame-container">
+        <iframe id="video1" src="https://www.facebook.com/plugins/video.php?href=https://fb.watch/xV2aeUF2wb/" allow="autoplay" allowfullscreen></iframe>
+        <iframe id="video2" src="sarayu.mp4" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <button class="close-btn" onclick="goBack()">Close</button>
+    
+    <script>
+        function pauseOtherVideos(currentFrame) {
+            document.querySelectorAll('iframe').forEach(frame => {
+                if (frame !== currentFrame) {
+                    let src = frame.src;
+                    frame.src = '';
+                    frame.src = src;
+                }
+            });
+        }
+
+        document.querySelectorAll('iframe').forEach(frame => {
+            frame.addEventListener('mouseover', function() {
+                pauseOtherVideos(frame);
+            });
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
