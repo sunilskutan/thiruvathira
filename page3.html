@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Blink with Links</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('mela.jpg') no-repeat center center;
+            background-size: 100% 100%;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+        }
+        #blinkingImage {
+            width: 60px;
+            height: auto;
+            animation: blink 1s infinite alternate;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        #textLink {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            cursor: pointer;
+            text-align: center;
+            animation: glitter 1s infinite alternate;
+        }
+        @keyframes glitter {
+            0% { color: gold; text-shadow: 0 0 5px gold; }
+            50% { color: white; text-shadow: 0 0 10px white; }
+            100% { color: gold; text-shadow: 0 0 5px gold; }
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: gold;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 2s linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100vh); }
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <a href="mermaid.mp4">
+        <img id="blinkingImage" src="malsyam.jpg" alt="Blinking Fish">
+    </a>
+    <div id="textLink">ഭാരവാഹികള്‍</div>
+
+    <script>
+        document.getElementById('textLink').addEventListener('click', function() {
+            window.open('bearers.jpg', '_blank');
+            for (let i = 0; i < 30; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        });
+    </script>
+</body>
+</html>
