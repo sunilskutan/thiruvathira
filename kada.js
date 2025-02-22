@@ -18,25 +18,30 @@
                     "Event schedule"
                 ];
                 
-                for (let i = 2; i <= 16; i++) {
-                    // Get appropriate message from array (adjust index to match button numbers)
-                    const messageIndex = i - 2;
-                    const message = tooltipMessages[messageIndex] || `Custom message ${i}`;
-                    
-                    document.write(`
-                        <div style="position: relative;">
-                            <div class="tooltip">
-                                <a href="page${i}.html">
-                                    <button class="small-round-button" 
-                                        onmouseover="showTooltip(this)" 
-                                        onmouseout="hideTooltip(this)"></button>
-                                </a>
-                                <span class="tooltiptext">${message}</span>
-                            </div>
-                            <button class="image-button" onclick="showImage('${i}b.jpg')">${i}</button>
-                        </div>
-                    `);
-                }
+               for (let i = 2; i <= 16; i++) {
+    // Get appropriate message from array (adjust index to match button numbers)
+    const messageIndex = i - 2;
+    const message = tooltipMessages[messageIndex] || `Custom message ${i}`;
+    
+    // Set background color to red for i = 8
+    const smallButtonStyle = (i === 8) ? 'background-color: red;' : '';
+    const imageButtonStyle = (i === 8) ? 'background-color: red;' : '';
+    
+    document.write(`
+        <div style="position: relative;">
+            <div class="tooltip">
+                <a href="page${i}.html">
+                    <button class="small-round-button" 
+                        onmouseover="showTooltip(this)" 
+                        onmouseout="hideTooltip(this)"
+                        style="${smallButtonStyle}"></button>
+                </a>
+                <span class="tooltiptext">${message}</span>
+            </div>
+            <button class="image-button" onclick="showImage('${i}b.jpg')" style="${imageButtonStyle}">${i}</button>
+        </div>
+    `);
+}
 
         function showImage(imageSrc) {
             document.getElementById("largeImage").src = imageSrc;
