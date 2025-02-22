@@ -18,6 +18,10 @@
             overflow: hidden;
             width: 100vw;
         }
+        #content {
+            margin-top: 400px; /* Adjust this value to move the content down */
+            text-align: center;
+        }
         #blinkingImage {
             width: 60px;
             height: auto;
@@ -28,7 +32,7 @@
             100% { opacity: 0; }
         }
         #textLink {
-             margin-top: 50px;
+            margin-top: 20px; /* Adjust this value to move the text down */
             font-size: 18px;
             font-weight: bold;
             color: white;
@@ -58,14 +62,16 @@
     </style>
 </head>
 <body>
-    <a href="mermaid.mp4">
-        <img id="blinkingImage" src="malsyam.jpg" alt="Blinking Fish">
-    </a>
-    <div id="textLink">ഭാരവാഹികള്‍</div>
+    <div id="content">
+        <a href="mermaid.mp4">
+            <img id="blinkingImage" src="malsyam.jpg" alt="Blinking Fish">
+        </a>
+        <div id="textLink">ഭാരവാഹികള്‍</div>
+    </div>
 
     <script>
         document.getElementById('textLink').addEventListener('click', function() {
-            window.open('bearers.jpg', '_blank');
+            window.location.href = 'bearers.jpg';
             for (let i = 0; i < 30; i++) {
                 let confetti = document.createElement('div');
                 confetti.classList.add('confetti');
