@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots - Scrolling Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffccff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #e6004c;
+            text-align: center;
+        }
+
+        .image-container {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scrolling-image {
+            width: 100%;
+            position: absolute;
+            animation: scrollAnimation 300s linear infinite;
+        }
+
+        @keyframes scrollAnimation {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -6791px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .image-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        .head-image {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>അവാര്‍ഡുകള്‍</h1>
+    <div class="image-container">
+        <img src="trophy.png" alt="Plots visualization" class="scrolling-image" id="scrollingImage">
+    </div>
+
+    <img src="img23.jpg" alt="head" class="head-image">
+
+    <script>
+        let isScrolling = true;
+        const image = document.getElementById("scrollingImage");
+        
+        document.body.addEventListener("click", function() {
+            if (isScrolling) {
+                image.style.animationPlayState = "paused";
+            } else {
+                image.style.animationPlayState = "running";
+            }
+            isScrolling = !isScrolling;
+        });
+    </script>
+</body>
+</html>
