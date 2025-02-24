@@ -44,22 +44,7 @@
     <button class="close-btn" onclick="goBack()">Close</button>
     
     <script>
-        function pauseOtherVideos(currentFrame) {
-            document.querySelectorAll('iframe').forEach(frame => {
-                if (frame !== currentFrame) {
-                    let src = frame.src;
-                    frame.src = '';
-                    frame.src = src;
-                }
-            });
-        }
-
-        document.querySelectorAll('iframe').forEach(frame => {
-            frame.addEventListener('mouseover', function() {
-                pauseOtherVideos(frame);
-            });
-        });
-
+        
         function goBack() {
             window.history.back();
         }
