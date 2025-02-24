@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ccffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: blue;
+            text-align: center;
+        }
+
+        .display-area {
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scrolling-image {
+            width: 100%;
+            position: absolute;
+            animation: scrollAnimation 150s linear infinite;
+        }
+
+        @keyframes scrollAnimation {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -3395px;
+            }
+        }
+
+        label, input {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>അറിയിപ്പുകൾ</h1>
+    <label for="speedControl">Adjust Speed:</label>
+    <input type="range" id="speedControl" min="10" max="500" value="150">
+    <div class="display-area">
+        <img src="ariyipp.png" alt="Plots visualization" class="scrolling-image" id="scrollingImage">
+    </div>
+    
+    <script>
+        let isScrolling = true;
+        const image = document.getElementById("scrollingImage");
+        const speedControl = document.getElementById("speedControl");
+        
+        document.body.addEventListener("click", function() {
+            if (isScrolling) {
+                image.style.animationPlayState = "paused";
+            } else {
+                image.style.animationPlayState = "running";
+            }
+            isScrolling = !isScrolling;
+        });
+
+        speedControl.addEventListener("input", function() {
+            const speed = speedControl.value;
+            image.style.animationDuration = speed + "s";
+        });
+    </script>
+</body>
+</html>
