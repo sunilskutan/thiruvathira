@@ -2,8 +2,8 @@
                 // Array of 15 custom tooltip messages
                 const tooltipMessages = [
                     "പള്ളിയറ നവീകരണം",
-                    "Discover our heritage",
-                    "Join the celebration",
+                    "മേള",
+                    "ദീപാലങ്കാരം",
                     "Learn about rituals",
                     "Experience the music",
                     "View dance performances",
@@ -11,10 +11,10 @@
                     "Special ceremonies",
                     "Festival highlights",
                     "Meet the community",
-                    "Traditional attire",
-                    "Festival foods",
+                    "THIRUMALI",
+                    "കനല്‍ & വിനീത് ശ്രീനിവാസന",
                     "MUSIC DROPS",
-                    "Photo gallery",
+                    "വൈക്കം വിജയലക്ഷ്മി&സരയു-കൃഷ്ണപ്രഭ",
                     "Event schedule"
                 ];
                 
