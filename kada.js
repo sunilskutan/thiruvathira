@@ -6,16 +6,16 @@
                     "ദീപാലങ്കാരം",
                     "അവാര്‍ഡുകള്‍",
                     "സംഭാവനകള്‍",
-                    "View dance performances",
+                    "അറിയിപ്പുകള്‍",
                     "കെട്ടുകാഴ്ചകള്‍",
-                    "Special ceremonies",
-                    "Festival highlights",
-                    "Meet the community",
+                    "DJ with CHENDA & feel Good Comedy",
+                    "Aloshi and Folk Music",
+                    "Job Kurien and Kathakali",
                     "THIRUMALI",
                     "കനല്‍ & വിനീത് ശ്രീനിവാസന",
                     "MUSIC DROPS",
                     "വൈക്കം വിജയലക്ഷ്മി&സരയു-കൃഷ്ണപ്രഭ",
-                    "Event schedule"
+                    "ഫോട്ടോ ഗ്യാലറി"
                 ];
                 
                for (let i = 2; i <= 16; i++) {
