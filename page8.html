@@ -71,46 +71,61 @@
                 }
             }
         }
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .thumbnail-container img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .thumbnail-container img:hover {
+            transform: scale(1.1);
+        }
     </style>
-	<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let audio = new Audio("shinkari_melam.mp3");
-        audio.loop = true;
-        let isPlaying = false;
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = new Audio("shinkari_melam.mp3");
+            audio.loop = true;
+            let isPlaying = false;
 
-        // Toggle audio on click
-        document.body.addEventListener("click", function () {
-            if (isPlaying) {
-                audio.pause();
-            } else {
-                audio.play();
-            }
-            isPlaying = !isPlaying;
+            // Toggle audio on click
+            document.body.addEventListener("click", function () {
+                if (isPlaying) {
+                    audio.pause();
+                } else {
+                    audio.play();
+                }
+                isPlaying = !isPlaying;
+            });
         });
-    });
-</script>
-
+        
+        function openVideo(videoId) {
+            window.open(`https://www.youtube.com/embed/${videoId}?autoplay=1&fs=1`, '_blank');
+        }
+    </script>
 </head>
 <body>
     <h1>കെട്ടുകാഴ്ചകള്‍ </h1>
     <div class="image-container">
         <img src="plots2.jpg" alt="Plots visualization" class="scrolling-image">
     </div>
-    
-    <script>
-        // Replace the placeholder with your actual image URL
-        document.addEventListener('DOMContentLoaded', function() {
-            // You'll need to replace this with your actual image URL
-            // const imageUrl = 'plots2.jpg';
-            // document.querySelector('.scrolling-image').src = imageUrl;
-        });
-    </script>
 
-<div >
-<br><br>
-        <img src="img22.png" alt="head" >
+    <div>
+        <br><br>
+        <center><img src="img22.png" alt="head"> </center>
+        <div class="thumbnail-container">
+            <img src="https://img.youtube.com/vi/5Q1ZCsCsnzE/0.jpg" onclick="openVideo('5Q1ZCsCsnzE')">
+            <img src="https://img.youtube.com/vi/KQNKk-5LsNA/0.jpg" onclick="openVideo('KQNKk-5LsNA')">
+            <img src="https://img.youtube.com/vi/GCd-bZjSOnc/0.jpg" onclick="openVideo('GCd-bZjSOnc')">
+            <img src="https://img.youtube.com/vi/BHb68sjJLfA/0.jpg" onclick="openVideo('BHb68sjJLfA')">
+            <img src="https://img.youtube.com/vi/hZ6xHUbOg7k/0.jpg" onclick="openVideo('hZ6xHUbOg7k')">
+            <img src="https://img.youtube.com/vi/myXC7R45wXI/0.jpg" onclick="openVideo('myXC7R45wXI')">
+        </div>
     </div>
-
-
 </body>
 </html>
