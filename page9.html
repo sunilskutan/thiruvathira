@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            gap: 10px;
+            max-width: 200px;
+        }
+        .video {
+            width: 100%;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .video:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <img src="img23.jpg" alt="Title Image"><br><br><br>
+    <div class="grid-container">
+        <img class="video" src="img91.jpg" onclick="openVideo('https://www.instagram.com/hippyz_z/reel/DDzcmbPTEqU/')">
+        <img class="video" src="img92.jpg" onclick="openVideo('https://www.facebook.com/DainDavisDD/posts/all-the-best-team-cochin-kalarasika-/1043250240498580/')">
+    </div>
+
+    <script>
+        function openVideo(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
