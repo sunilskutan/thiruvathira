@@ -38,7 +38,9 @@
                 </a>
                 <span class="tooltiptext">${message}</span>
             </div>
-            <button class="image-button" onclick="showImage('${i}b.jpg')" style="${imageButtonStyle}">${i}</button>
+            <button class="image-button" 
+                onclick="${i === 6 ? "window.location.href='6b.html'" : `showImage('${i}b.jpg')`}" 
+                style="${imageButtonStyle}">${i}</button>
         </div>
     `);
 }
@@ -62,29 +64,3 @@
             // This function can be used for additional logic if needed
         }
 
-
-
-          
-/*
-
- for (let i = 2; i <= 16; i++) {
-                    document.write(`
-                        <div style="position: relative;">
-                            <a href="page${i}.html">
-                                <button class="small-round-button"></button>
-                            </a>
-                            <button class="image-button" onclick="showImage('${i}b.jpg')">${i}</button>
-                        </div>
-                    `);
-                }
-
-
-function showImage(imageSrc) {
-            document.getElementById("largeImage").src = imageSrc;
-            document.getElementById("overlay").style.display = "flex";
-        }
-
-        function closeOverlay() {
-            document.getElementById("overlay").style.display = "none";
-        }
-*/
