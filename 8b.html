@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Blinking Dots as Links</title>
+    <style>
+        .image-container {
+            position: relative;
+            width: 584px;
+            height: 820px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        .dot-link {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: green; /* Change color if needed */
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.8;
+            animation: blink 1s infinite alternate;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="8b.jpg" alt="Image">
+        
+        <a href="https://youtu.be/c2Wfw0gIBQI?si=EfuAhH7cPWm4hKtI" class="dot-link" id="nadira" style="top: 552px; left: 305px;"></a>
+
+        <a href="https://youtu.be/vO_zzI-t5Ow?si=76KjniT-l456onYw" class="dot-link" style="top: 630px; left:418px;"></a>
+	 <a href="https://youtube.com/shorts/V3dGkhS30lk?si=XoI1pyYr0-2nqpri" class="dot-link" style="top: 672px; left:495px;"></a>
+ <a href="page8.html" class="dot-link" style="top: 773px; left:231px;"></a>
+    </div>
+</body>
+</html>
+
+
